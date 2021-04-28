@@ -1,0 +1,28 @@
+S25vd2xlZGdlIFBhY2thZ2VzIC0gUHJlc2VudGF0aW9uIFZpZGVv:
+    name: "Knowledge Packages - Presentation Video"
+    type: DIRECTORY
+    dependencies: 
+        - QmWzJZGxDFxUgKWqDazY5rvWMAgj1qoR5iNeSm6LuiUmkB
+    links:
+    predeployment:
+        execute_before:
+        execute_after: 
+    postdeployment:
+        execute_before:
+        execute_after: 
+    acquiring_subroutine_override: 
+    integrity_control_subroutine_override: base64_name
+
+QmWzJZGxDFxUgKWqDazY5rvWMAgj1qoR5iNeSm6LuiUmkB:
+    name: "Knowledge Packages [2021-04-15].mp4"
+    type: IPFS FILE
+    dependencies: 
+    links: 
+    predeployment:
+        execute_before: 
+        execute_after: 
+    postdeployment:
+        execute_before: 
+        execute_after: 
+    acquiring_subroutine_override:
+    integrity_control_subroutine_override: 
