@@ -47,11 +47,19 @@ def control_ipfs(pid, pkg_def):
     return True    # Just the stub to not implement the node on the client side
 
 
+def post_movefile(pid, pkg_def):
+    # Fake demo before parameter passing convention determined
+    global packages_path
+    os.rename(os.path.join(packages_path, 'Knowledge Packages [2021-04-15].mp4'),
+              os.path.join(os.path.join(packages_path, 'Knowledge Packages - Presentation Video'),
+                           'Knowledge Packages [2021-04-15].mp4'))
+
+
 acquiring_subroutines_avail = {"DIRECTORY": acquiring_mkdir,
                                "IPFS FILE": acquiring_ipfs_file}
 control_subroutines_avail = {'base64_name': control_base64name,
                              'IPFS FILE': control_ipfs}
-
+postdeployment_subroutines_avail = {'move_file': post_movefile}
 
 def resolve_local(pid):
     global pkg_db, \
@@ -109,7 +117,16 @@ def deploy_package(pid):
             print('Entering INTEGRITY CONTROL stage')
             control_subroutine = resolved[3]
             if control_subroutine(pid, pkg_def):
-                print('Package {} data considered deployed'.format(pkg_def['name']))
+                print('Package {} data considered deployed, running POSTDEPLOYMENT stage'.format(pkg_def['name']))
+                if pkg_def['postdeployment']['execute_before'] is not None:
+                    for i in pkg_def['postdeployment']['execute_before']:
+                        post_before = postdeployment_subroutines_avail[i]
+                        post_before(pid, pkg_def)
+                if pkg_def['postdeployment']['execute_after'] is not None:
+                    for i in pkg_def['postdeployment']['execute_after']:
+                        print(i)
+                        post_before = postdeployment_subroutines_avail[i]
+                        post_before(pid, pkg_def)
             else:
                 print('Error occurred deploying package {}!'.format(pkg_def['name']))
             break
@@ -119,9 +136,6 @@ def deploy_package(pid):
 
 
 deploy_package(pid)
-print('DEMO: fake POSTDEPLOYMENT stage')
-os.rename(os.path.join(packages_path, 'Knowledge Packages [2021-04-15].mp4'),
-          os.path.join(os.path.join(packages_path, 'Knowledge Packages - Presentation Video'),
-                       'Knowledge Packages [2021-04-15].mp4'))
+
 pkg_db_file.close()
 
