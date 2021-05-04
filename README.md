@@ -1,4 +1,7 @@
 # Knowledge Package - deployment demo
+
+[![DOI](https://zenodo.org/badge/364314508.svg)](https://zenodo.org/badge/latestdoi/364314508)
+
 This repository contains a [Python 3 script](./demo-archivarius.py) that demonstrates the logic of deployment for so called 'Knowledge Package' in accordance to the concept described in the following documents (WIP):
 - [Presentation](https://docs.google.com/presentation/d/1jJix6emQyPVbTTxr5HTc0jiB-Nf3lPnujJ-cMa6BCNo/edit?usp=sharing)
 - [Scope/Concept Description](https://docs.google.com/document/d/1z92rN3sRDd-mjKkCIo8RZxG1vFkXSnsvvD1xCKL2kiM/edit?usp=sharing)
