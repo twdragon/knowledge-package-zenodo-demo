@@ -11,6 +11,7 @@ To run the demo, just dive into the cloned directory and run via Python 3:
 ```sh
 python3 demo-archivarius.py
 ```
+After successful execution (Internet connection is required) in the script's directory the new subdirectory called `packages` will be created. Inside the another subdirectory containing the video will be placed.
 
 ### Dependencies
 - POSIX-compatible operating system
